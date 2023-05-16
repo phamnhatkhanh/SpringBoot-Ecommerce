@@ -1,4 +1,13 @@
 SimpleGrantedAuthority: what is it ?
 
 Login: how to spring retrieve file login.html
-    - process
+    - process: create account Admin -- and auto create row  in admins_role table
+
+
+AuthController: what is model ?
+
+
+
+
+===Done==============================================================
+Code: register Facebook, Google + forgot pass(send mail)
