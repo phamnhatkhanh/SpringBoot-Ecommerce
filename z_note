@@ -10,4 +10,8 @@ AuthController: what is model ?
 
 
 ===Done==============================================================
+==#==============================================================
+- Spring Security: Authen Admin
+- Login and Register.
+==============Task===================================================
 Code: register Facebook, Google + forgot pass(send mail)
