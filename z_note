@@ -6,6 +6,12 @@ Login: how to spring retrieve file login.html
 
 AuthController: what is model ?
 
+product html: not get attribute actived.
+    - quá trình lấy biến này ra kiểu gì.
+ProductIml: hàm transfer bị sai rồi.
+    - convert sao biến actived luôn false.
+product model:
+    - Làm sao Spring map field is_actived(DB) với actived ở model.
 
 
 
@@ -14,4 +20,13 @@ AuthController: what is model ?
 - Spring Security: Authen Admin
 - Login and Register.
 ==============Task===================================================
-Code: register Facebook, Google + forgot pass(send mail)
+Login: register Facebook, Google + forgot pass(send mail)
+Product: panigation product/0
+Product: sửa lại chỗ upload img -> sao push thẳn nguyên file image lên data luôn.
+
+
+
+
+===Current==============================================================
+
+

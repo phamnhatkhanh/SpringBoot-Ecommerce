@@ -25,7 +25,6 @@ public class CategoryController {
             return "redirect:/login";
         }
         List<Category> categories = categoryService.findALl();
-        System.out.println(categories.get(0));
         model.addAttribute("categories", categories);
         model.addAttribute("size", categories.size());
         model.addAttribute("title", "Category");

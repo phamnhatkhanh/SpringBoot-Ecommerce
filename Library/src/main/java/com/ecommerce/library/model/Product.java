@@ -16,17 +16,21 @@ public class Product {
     @Column(name = "product_id")
     private Long id;
     private String name;
+    @Column(columnDefinition="TEXT")
     private String description;
     private int currentQuantity;
     private double costPrice;
     private double salePrice;
+    @Column(name = "is_activated")
+    private boolean activated;
+    @Column(name = "is_deleted")
+    private boolean deleted;
     @Lob
     @Column(columnDefinition = "MEDIUMBLOB")
     private String image;
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id", referencedColumnName = "category_id")
     private Category category;
-    private boolean is_activated;
-    private boolean is_deleted;
+
 
 }

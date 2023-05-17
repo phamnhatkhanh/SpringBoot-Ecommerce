@@ -50,7 +50,6 @@ public class AuthController {
 
     @GetMapping("/forgot-password")
     public String forgotPassword(Model model) {
-        System.out.println("skjnfksf");
         model.addAttribute("title", "Forgot Password");
         return "forgot-password";
     }

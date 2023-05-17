@@ -32,7 +32,9 @@ public class ProductController {
         if(principal == null){
             return "redirect:/login";
         }
+
         List<ProductDto> productDtoList = productService.findAll();
+//        System.out.println(productDtoList.get(0));
         model.addAttribute("title", "Manage Product");
         model.addAttribute("products", productDtoList);
         model.addAttribute("size", productDtoList.size());
@@ -76,7 +78,7 @@ public class ProductController {
         if(principal == null){
             return "redirect:/login";
         }
-        List<Category> categories = categoryService.findAllByActivated();
+        List<Category> categories = categoryService.findAllByActivatedTrue();
         model.addAttribute("categories", categories);
         model.addAttribute("product", new ProductDto());
         return "add-product";
@@ -102,7 +104,7 @@ public class ProductController {
             return "redirect:/login";
         }
         model.addAttribute("title", "Update products");
-        List<Category> categories = categoryService.findAllByActivated();
+        List<Category> categories = categoryService.findAllByActivatedTrue();
         ProductDto productDto = productService.getById(id);
         model.addAttribute("categories", categories);
         model.addAttribute("productDto", productDto);
@@ -130,24 +132,26 @@ public class ProductController {
     @RequestMapping(value = "/enable-product/{id}", method = {RequestMethod.PUT , RequestMethod.GET})
     public String enabledProduct(@PathVariable("id")Long id, RedirectAttributes attributes){
         try {
+
             productService.enableById(id);
             attributes.addFlashAttribute("success", "Enabled successfully!");
         }catch (Exception e){
             e.printStackTrace();
             attributes.addFlashAttribute("error", "Failed to enabled!");
         }
-        return "redirect:/products";
+        return "redirect:/products/0";
     }
 
     @RequestMapping(value = "/delete-product/{id}", method = {RequestMethod.PUT, RequestMethod.GET})
     public String deletedProduct(@PathVariable("id") Long id, RedirectAttributes attributes){
         try {
+            System.out.println("deletedProduct " + id);
             productService.deleteById(id);
             attributes.addFlashAttribute("success", "Deleted successfully!");
         }catch (Exception e){
             e.printStackTrace();
             attributes.addFlashAttribute("error", "Failed to deleted");
         }
-        return "redirect:/products";
+        return "redirect:/products/0";
     }
 }
