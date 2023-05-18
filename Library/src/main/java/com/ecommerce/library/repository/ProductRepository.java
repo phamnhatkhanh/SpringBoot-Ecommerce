@@ -28,7 +28,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product> getAllProducts();
 
 
-    @Query(value = "select * from products p where p.deleted = false and p.activated = true order by rand() asc limit 4 ", nativeQuery = true)
+    @Query(value = "select * from products p where p.is_deleted = false and p.is_activated = true order by rand() asc limit 4 ", nativeQuery = true)
     List<Product> listViewProducts();
 
 

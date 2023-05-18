@@ -21,4 +21,9 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
             "where c.activated = true and c.deleted = false " +
             "group by c.id ")
     List<CategoryDto> getCategoriesAndSize();
+
+    /*Customer*/
+    @Query("select new com.ecommerce.library.dto.CategoryDto(c.id, c.name, count(p.category.id)) from Category c inner join Product p on p.category.id = c.id " +
+            " where c.activated = true and c.deleted = false group by c.id")
+    List<CategoryDto> getCategoryAndProduct();
 }

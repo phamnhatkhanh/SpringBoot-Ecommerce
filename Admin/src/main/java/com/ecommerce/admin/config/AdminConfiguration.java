@@ -61,8 +61,7 @@ public class AdminConfiguration {
                 .logoutSuccessUrl("/login?logout")
                 .permitAll()
                 .and()
-                .authenticationManager(authenticationManager)
-        ;
+                .authenticationManager(authenticationManager);
         return http.build();
     }
 

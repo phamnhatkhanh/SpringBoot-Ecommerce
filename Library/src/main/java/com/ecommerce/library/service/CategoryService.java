@@ -22,4 +22,6 @@ public interface CategoryService {
     void enableById(Long id);
 
     List<CategoryDto> getCategoriesAndSize();
+    /*Customer*/
+    List<CategoryDto> getCategoryAndProduct();
 }

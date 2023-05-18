@@ -65,6 +65,10 @@ public class CategoryServiceImpl implements CategoryService {
         List<CategoryDto> categories = categoryRepository.getCategoriesAndSize();
         return categories;
     }
+    @Override
+    public List<CategoryDto> getCategoryAndProduct() {
+        return categoryRepository.getCategoryAndProduct();
+    }
 
 }
 
