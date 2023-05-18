@@ -51,7 +51,7 @@
     <!--&lt;!&ndash; Logout Modal&ndash;&gt;
     <div th:replace = "fragments :: logoutModal"></div>-->
 
-    <div th:replace = "fragments::script"></div>
+    <div th:replace = ="~{fragments::script}"></div>
     <!-- Page level plugins -->
     <script th:src="@{/vendor/chart.js/Chart.min.js}"></script>
 

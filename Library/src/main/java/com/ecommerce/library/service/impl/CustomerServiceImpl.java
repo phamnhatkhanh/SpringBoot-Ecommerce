@@ -65,8 +65,6 @@ public class CustomerServiceImpl implements CustomerService {
 
     public CustomerDto transferToCustomerDto(Customer customer){
         CustomerDto customerDto = new CustomerDto();
-
-
         customerDto.setFirstName(customer.getFirstName());
         customerDto.setLastName(customer.getLastName());
         customerDto.setImage(customer.getImage());
@@ -76,10 +74,6 @@ public class CustomerServiceImpl implements CustomerService {
         customerDto.setAddress(customer.getAddress());
         customerDto.setCity(customer.getCity());
         customerDto.setCountry(customer.getCountry());
-
-
-
-
         return customerDto;
     }
 

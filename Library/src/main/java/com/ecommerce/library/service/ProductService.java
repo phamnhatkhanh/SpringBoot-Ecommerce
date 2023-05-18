@@ -35,4 +35,7 @@ public interface ProductService {
     List<Product> filterHighPrice();
 
     List<Product> filterLowPrice();
+    ProductDto transferToProductDto(Product product);
+
+    Product transferToProduct(ProductDto productDto);
 }

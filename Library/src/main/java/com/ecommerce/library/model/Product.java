@@ -32,5 +32,7 @@ public class Product {
     @JoinColumn(name = "category_id", referencedColumnName = "category_id")
     private Category category;
 
-
+    public double getUnitPrice() {
+        return costPrice - salePrice;
+    }
 }

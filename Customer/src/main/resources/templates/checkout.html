@@ -28,7 +28,7 @@
 <!-- End Top Search -->
 
 <!-- Start All Title Box -->
-<div th:replace="fragments::all-title-box">
+<div th:replace="~{fragments::slider}">
 </div>
 <!-- End All Title Box -->
 
@@ -61,7 +61,7 @@
                                    th:value="${customer.address + ' ' + customer.city + ' ' + customer.country}"
                                    id="address" placeholder="" readonly>
                         </div>
-                        <a th:href="@{/profile}" class="btn btn-primary"> Change information</a>
+                        <a th:href="@{/account}" class="btn btn-primary"> Change information</a>
                         <hr class="mb-4">
                         <div class="title"><span>Payment Methods</span></div>
                         <div class="d-block my-3">
@@ -84,12 +84,12 @@
                                 <h3>Shopping cart</h3>
                             </div>
                             <div class="rounded p-2 bg-light">
-                                <div class="media mb-2 border-bottom" th:each="item : ${shoppingCart.getCartItems()}">
+                                <div class="media mb-2 border-bottom" th:each="item : ${shoppingCart.get().getCartItem()}">
                                     <div class="media-body"><a th:href="@{/product-detail}"
                                                                th:text="${item.product.name}"></a>
                                         <div class="small text-muted">Price: [(${item.product.costPrice})]$ <span
                                                 class="mx-2">|</span> Qty: [(${item.quantity})]
-                                            <span class="mx-2">|</span> Subtotal: $ + [(${item.unitPrice *
+                                            <span class="mx-2">|</span> Subtotal: $ + [(${item.product.getUnitPrice() *
                                             item.quantity})]
                                         </div>
                                     </div>
@@ -109,7 +109,7 @@
                             <hr class="my-1">
                             <div class="d-flex">
                                 <h4>Sub Total</h4>
-                                <div class="ml-auto font-weight-bold" th:text="${shoppingCart.totalPrice}"></div>
+                                <div class="ml-auto font-weight-bold" th:text="${shoppingCart.get().getTotalPrices()}"></div>
                             </div>
                             <hr class="my-1">
                             <div class="d-flex">
@@ -123,7 +123,7 @@
                             <hr>
                             <div class="d-flex gr-total">
                                 <h5>Grand Total</h5>
-                                <div class="ml-auto h5" th:text="${shoppingCart.totalPrice + 2}"></div>
+                                <div class="ml-auto h5" th:text="${shoppingCart.get().getTotalPrices() + 2}"></div>
                             </div>
                             <hr>
                         </div>

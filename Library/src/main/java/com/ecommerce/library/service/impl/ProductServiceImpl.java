@@ -1,6 +1,8 @@
 package com.ecommerce.library.service.impl;
 
+import com.ecommerce.library.dto.CustomerDto;
 import com.ecommerce.library.dto.ProductDto;
+import com.ecommerce.library.model.Customer;
 import com.ecommerce.library.model.Product;
 import com.ecommerce.library.repository.ProductRepository;
 import com.ecommerce.library.service.ProductService;
@@ -157,22 +159,40 @@ public class ProductServiceImpl implements ProductService {
     private List<ProductDto> transfer(List<Product> products){
         List<ProductDto> productDtoList = new ArrayList<>();
         for(Product product : products){
-            ProductDto productDto = new ProductDto();
-            productDto.setId(product.getId());
-            productDto.setName(product.getName());
-            productDto.setDescription(product.getDescription());
-            productDto.setCurrentQuantity(product.getCurrentQuantity());
-            productDto.setCategory(product.getCategory());
-            productDto.setSalePrice(product.getSalePrice());
-            productDto.setCostPrice(product.getCostPrice());
-            productDto.setImage(product.getImage());
-            productDto.setDeleted(product.isDeleted());
-            productDto.setActivated(product.isActivated());
-            productDtoList.add(productDto);
+            productDtoList.add(transferToProductDto(product));
         }
         return productDtoList;
     }
+    public ProductDto transferToProductDto(Product product){
+        ProductDto productDto = new ProductDto();
+        productDto.setId(product.getId());
+        productDto.setName(product.getName());
+        productDto.setDescription(product.getDescription());
+        productDto.setCurrentQuantity(product.getCurrentQuantity());
+        productDto.setCategory(product.getCategory());
+        productDto.setSalePrice(product.getSalePrice());
+        productDto.setCostPrice(product.getCostPrice());
+        productDto.setImage(product.getImage());
+        productDto.setDeleted(product.isDeleted());
+        productDto.setActivated(product.isActivated());
+        return productDto;
+    }
 
+    public Product transferToProduct(ProductDto productDto){
+        Product product = new Product();
+        product.setId( productDto.getId());
+        product.setName (productDto.getName());
+        product.setDescription (productDto.getDescription());
+        product.setCurrentQuantity (productDto.getCurrentQuantity());
+        product.setCategory (productDto.getCategory());
+        product.setSalePrice (productDto.getSalePrice());
+        product.setCostPrice (productDto.getCostPrice());
+        product.setImage (productDto.getImage());
+        product.setDeleted (productDto.isDeleted());
+        product.setActivated (productDto.isActivated());
+
+        return product;
+    }
 
     /*Customer*/
 

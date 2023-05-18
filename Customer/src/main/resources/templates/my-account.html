@@ -14,19 +14,19 @@
 
 <body>
 <!-- Start Main Top -->
-<div th:replace="fragments::main-top">
+<div th:replace="~{fragments::main-top}">
 
 </div>
 <!-- End Main Top -->
 
 
 <!-- Start Main Top -->
-<header th:replace="fragments::main-header">
+<header th:replace=="~{fragments::main-header}">
 </header>
 <!-- End Main Top -->
 
 <!-- Start Top Search -->
-<div th:replace="fragments::top-search">
+<div th:replace=="~{fragments::instagram-box}">
 </div>
 <!-- End Top Search -->
 
@@ -107,7 +107,7 @@
 <!-- End My Account -->
 
 <!-- Start Feed  -->
-<div th:replace="fragments::instagram-box">
+<div th:replace=="~{fragments::instagram-box}">
 </div>
 
 <!-- End Feed  -->
@@ -117,7 +117,7 @@
 <footer th:replace="fragments::footer"></footer>
 
 <!-- ALL JS FILES -->
-<div th:replace = "fragments::script"></div>
+<div th:replace = ="~{fragments::script}"></div>
 </body>
 
 </html>

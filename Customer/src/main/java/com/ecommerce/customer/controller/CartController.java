@@ -38,13 +38,15 @@ public class CartController {
         System.out.println("shoppingCart: " + shoppingCart.get());
         if(!shoppingCart.isPresent()){
             model.addAttribute("check", "No item in your cart");
+        }else{
+
+            session.setAttribute("totalItems", shoppingCart.map(ShoppingCart::getTotalItems).orElse(0));
+            model.addAttribute("grandTotal",  shoppingCart.map(ShoppingCart::getTotalItems).orElse(0));
+            model.addAttribute("subTotal", shoppingCart.map(ShoppingCart::getTotalPrices).orElse(0.0));
+            model.addAttribute("shoppingCart", shoppingCart);
         }
 
 
-        session.setAttribute("totalItems", shoppingCart.map(ShoppingCart::getTotalItems).orElse(0));
-        model.addAttribute("grandTotal",  shoppingCart.map(ShoppingCart::getTotalItems).orElse(0));
-        model.addAttribute("subTotal", shoppingCart.map(ShoppingCart::getTotalPrices).orElse(0.0));
-        model.addAttribute("shoppingCart", shoppingCart);
         return "cart";
     }
 
@@ -60,10 +62,11 @@ public class CartController {
             return "redirect:/login";
         }
         Product product = productService.getProductById(productId);
+
         String username = principal.getName();
         Customer customer = customerService.findByUsername(username);
 
-        ShoppingCart cart = cartService.addItemToCart(product, quantity, customer);
+        ShoppingCart cart = cartService.addItemToCart(productService.transferToProductDto(product), quantity, customer.getUsername());
         return "redirect:" + request.getHeader("Referer");
 
     }
@@ -74,7 +77,7 @@ public class CartController {
                              @RequestParam("id") Long productId,
                              Model model,
                              Principal principal
-                             ){
+    ){
 
         if(principal == null){
             return "redirect:/login";
@@ -82,7 +85,7 @@ public class CartController {
             String username = principal.getName();
             Customer customer = customerService.findByUsername(username);
             Product product = productService.getProductById(productId);
-            ShoppingCart cart = cartService.updateItemInCart(product, quantity, customer);
+            ShoppingCart cart = cartService.updateCart(productService.transferToProductDto(product), quantity, customer.getUsername());
 
             model.addAttribute("shoppingCart", cart);
             return "redirect:/cart";
@@ -101,7 +104,7 @@ public class CartController {
             String username = principal.getName();
             Customer customer = customerService.findByUsername(username);
             Product product = productService.getProductById(productId);
-            ShoppingCart cart = cartService.deleteItemFromCart(product, customer);
+            ShoppingCart cart = cartService.removeItemFromCart(productService.transferToProductDto(product), customer.getUsername());
             model.addAttribute("shoppingCart", cart);
             return "redirect:/cart";
         }

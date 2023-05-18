@@ -7,24 +7,27 @@
 
 <body>
 <!-- Start Main Top -->
-<div th:replace="fragments::main-top">
+<div th:replace="~{fragments::main-top}">
 </div>
 <!-- End Main Top -->
 
+
 <!-- Start Main Top -->
-<header th:replace="fragments::main-header">
+<header th:replace="~{fragments::main-header}">
 </header>
 <!-- End Main Top -->
 
 <!-- Start Top Search -->
-<div th:replace="fragments::top-search">
+<div th:replace="~{fragments::top-search}">
 </div>
 <!-- End Top Search -->
 
 <!-- Start All Title Box -->
-<div th:replace="fragments::instagram-box">
+<div th:replace="~{fragments::slider}">
 </div>
 <!-- End All Title Box -->
+
+
 <div class="mainDiv">
     <div class="cardStyle">
         <div class="text alert alert-warning" th:if = "${error}">
@@ -89,10 +92,18 @@
 <!-- End copyright  -->
 
 <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
-
-<!-- ALL JS FILES -->
-<div th:replace="fragments::script">
+<!-- Start Feed  -->
+<div th:replace="~{fragments::instagram-box}">
 </div>
+
+<!-- End Feed  -->
+
+
+<!-- Start Footer  -->
+<footer th:replace="~{fragments::footer}"></footer>
+
+
+<div th:replace="~{fragments::script}"></div>
 </body>
 
 </html>
