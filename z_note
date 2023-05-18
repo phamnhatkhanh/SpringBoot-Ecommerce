@@ -13,8 +13,9 @@ ProductIml: hàm transfer bị sai rồi.
 product model:
     - Làm sao Spring map field is_actived(DB) với actived ở model.
 
+Cart session: khai hay dùng packeage nào z ta -> sao dùng chung cho cả app được nhỉ.
 
-
+Profile Update: chưa được.
 ===Done==============================================================
 ==#==============================================================
 - Spring Security: Authen Admin
@@ -24,7 +25,7 @@ Login: register Facebook, Google + forgot pass(send mail)
 Product: panigation product/0
 Product: sửa lại chỗ upload img -> sao push thẳn nguyên file image lên data luôn.
 
-
+Cart: CRUD not working
 
 
 ===Current==============================================================

@@ -24,7 +24,7 @@ public class CustomerDto {
 
     private String address;
     private String confirmPassword;
-    private City city;
+    private String city;
     private String image;
     private String country;
 

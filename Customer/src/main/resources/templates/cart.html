@@ -30,7 +30,7 @@
 <!-- End Top Search -->
 
 <!-- Start All Title Box -->
-<div th:replace="fragments:: all-title-box">
+<div th:replace="~{fragments::slider}">
 </div>
 <!-- End All Title Box -->
 
@@ -54,18 +54,18 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="cartItem :  ${shoppingCart.cartItems}">
+                        <tr th:each="cartItem :  ${shoppingCart.get().getCartItem()}">
                             <td class="thumbnail-img">
                                 <a href="#">
                                     <img class="img-fluid"
-                                         th:src="*{'data:image/jepg;base64,' + cartItem.product.image}" alt=""/>
+                                         th:src="'data:image/jepg;base64,' + ${cartItem.product.image}" alt=""/>
                                 </a>
                             </td>
                             <td class="name-pr">
                                 <p th:text="${cartItem.product.name}"></p>
                             </td>
                             <td class="price-pr">
-                                <p th:text="'$' + ${cartItem.unitPrice}"></p>
+                                <p th:text="'$' + ${cartItem.product.costPrice}"></p>
                             </td>
                             <form th:action="@{/update-cart}" method="post">
                                 <input type = "hidden" name = "id" th:value = "${cartItem.product.id}" >
@@ -75,7 +75,7 @@
                                            class="c-input-text qty text">
                                 </td>
                                 <td class="total-pr">
-                                    <p th:text="'$' + ${cartItem.unitPrice * cartItem.quantity}"></p>
+                                    <p th:text="'$' + ${cartItem.product.costPrice * cartItem.quantity}"></p>
                                 </td>
                                 <td>
                                     <button type="submit" name="action" value="update" title="Update"
@@ -116,12 +116,12 @@
                     <hr>
                     <div class="d-flex gr-total">
                         <h5>Grand Total</h5>
-                        <div class="ml-auto h5" th:text="'$' + ${grandTotal + 2}"></div>
+                        <div class="ml-auto h5" th:text="'$' + ${shoppingCart.get().getTotalPrices()}"></div>
                     </div>
                     <hr>
                 </div>
             </div>
-            <div class="col-12 d-flex shopping-box"><a th:href="@{/checkout}" th:href="@{/check-out}" class="ml-auto btn hvr-hover">Checkout</a>
+            <div class="col-12 d-flex shopping-box"><a th:href="@{/check-out}" class="ml-auto btn hvr-hover">Checkout</a>
             </div>
         </div>
     </div>

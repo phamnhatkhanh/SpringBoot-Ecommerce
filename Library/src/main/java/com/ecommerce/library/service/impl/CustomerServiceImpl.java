@@ -7,7 +7,6 @@ import com.ecommerce.library.repository.RoleRepository;
 import com.ecommerce.library.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.Arrays;
 
 @Service
@@ -62,6 +61,26 @@ public class CustomerServiceImpl implements CustomerService {
         customer.setCountry(dto.getCountry());
         customer.setPhoneNumber(dto.getPhoneNumber());
         return customerRepository.save(customer);
+    }
+
+    public CustomerDto transferToCustomerDto(Customer customer){
+        CustomerDto customerDto = new CustomerDto();
+
+
+        customerDto.setFirstName(customer.getFirstName());
+        customerDto.setLastName(customer.getLastName());
+        customerDto.setImage(customer.getImage());
+        customerDto.setUsername(customer.getUsername());
+        customerDto.setPassword(customer.getPassword());
+        customerDto.setPhoneNumber(customer.getPhoneNumber());
+        customerDto.setAddress(customer.getAddress());
+        customerDto.setCity(customer.getCity());
+        customerDto.setCountry(customer.getCountry());
+
+
+
+
+        return customerDto;
     }
 
 }

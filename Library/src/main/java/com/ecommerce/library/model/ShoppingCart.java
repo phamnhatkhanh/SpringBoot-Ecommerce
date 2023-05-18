@@ -17,6 +17,11 @@ public class ShoppingCart {
     @Column(name = "shopping_cart_id")
     private Long id;
     private int totalItems;
+
+    public double getTotalPrices() {
+        return Math.round(totalPrices * 100.0) / 100.0;
+    }
+
     private double totalPrices;
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
@@ -24,4 +29,6 @@ public class ShoppingCart {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cart")
     private Set<CartItem> cartItem;
+
+
 }
